@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+
+enum Status {
+  SUCCESSFULLY_NOTICED
+  NOT_ANSWERED
+  NOT_CALLED
+  SUCCESSFULLY_SUBMITTED
+}
+
+model Volunteer {
+  id          Int       @id @default(autoincrement())  // Unique identifier for each volunteer
+  name        String
+  phoneNumber String
+  password    String
+  email       String    @unique
+  status      Status    @default(NOT_CALLED)           // Enum for call status
+  description String?                                  // Optional: Explanation of why the call didn’t work
+  lastCalled  DateTime?                                // Date when the volunteer was last called
+}
+
+model Admin {
+  id          Int       @id @default(autoincrement())  // Unique identifier for each admin
+  name        String
+  phoneNumber String
+  email       String    @unique
+  password    String
+  role        String    @default("ADMIN")              // Role: set default value to "ADMIN"
+}
+
+model Operator {
+  id          Int       @id @default(autoincrement())  // Unique identifier for each operator
+  name        String
+  phoneNumber String
+  email       String    @unique
+  password    String
+  role        String    @default("OPERATOR")           // Role: set default value to "OPERATOR"
+}
