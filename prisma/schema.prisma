@@ -21,11 +21,11 @@ enum Status {
   SUCCESSFULLY_SUBMITTED
 }
 
-model Volunteer {
+model User {
   id          Int       @id @default(autoincrement())  // Unique identifier for each volunteer
   name        String
   phoneNumber String
-  password    String
+
   email       String    @unique
   status      Status    @default(NOT_CALLED)           // Enum for call status
   description String?                                  // Optional: Explanation of why the call didn’t work
