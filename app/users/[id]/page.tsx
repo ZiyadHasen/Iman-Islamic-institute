@@ -5,6 +5,8 @@ import { cache } from 'react'
 import UserDetail from './UserDetail'
 import EditUserButton from './EditUserButton'
 import DeleteUserButton from './DeleteUserButton'
+import AssignUserSelect from './AssignUserSelect'
+import UserStatusSelect from './UserStatusSelect'
 
 interface Props {
   params: { id: string }
@@ -24,10 +26,10 @@ const UserDetailPage = async ({ params }: Props) => {
       </Box>
 
       <div className='flex flex-col gap-2'>
-        <div>assign</div>
+        <AssignUserSelect />
         <EditUserButton userId={user.id} />
         <DeleteUserButton userId={user.id} />
-        <div>status</div>
+        <UserStatusSelect userStatuses={user.status} />
       </div>
     </div>
   )

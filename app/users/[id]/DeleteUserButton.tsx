@@ -12,7 +12,12 @@ const DeleteUserButton = ({ userId }: { userId: number }) => {
     <>
       <AlertDialog.Root>
         <AlertDialog.Trigger>
-          <Button className='w-full' color='red' disabled={isDeleting}>
+          <Button
+            className='w-full'
+            color='red'
+            variant='solid'
+            disabled={isDeleting}
+          >
             Delete User {isDeleting && <Spinner />}
           </Button>
         </AlertDialog.Trigger>
