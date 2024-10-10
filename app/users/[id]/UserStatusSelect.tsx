@@ -2,14 +2,17 @@ import { Status } from '@prisma/client'
 import { Select } from '@radix-ui/themes'
 import React from 'react'
 
-const UserStatusSelect = ({ userStatuses }: { userStatuses: Status }) => {
+const UserStatusSelect = () => {
   return (
     <>
-      <Select.Root size='2' defaultValue='apple'>
-        <Select.Trigger />
+      <Select.Root>
+        <Select.Trigger className='w-full' placeholder='select status' />
         <Select.Content>
-          <Select.Item value='apple'>Apple</Select.Item>
-          <Select.Item value='orange'>Orange</Select.Item>
+          {Object.keys(Status).map((status) => (
+            <Select.Item key={status} value={status}>
+              {status.replaceAll('_', ' ').toLowerCase()}{' '}
+            </Select.Item>
+          ))}
         </Select.Content>
       </Select.Root>
     </>

@@ -29,7 +29,6 @@ const UserDetailPage = async ({ params }: Props) => {
         <AssignUserSelect />
         <EditUserButton userId={user.id} />
         <DeleteUserButton userId={user.id} />
-        <UserStatusSelect userStatuses={user.status} />
       </div>
     </div>
   )
