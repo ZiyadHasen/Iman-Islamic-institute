@@ -36,7 +36,7 @@ export default function RootLayout({
         <Theme accentColor='jade'>
           <NavBar />
           <Container>
-            <main>{children}</main>
+            <main className='p-4'>{children}</main>
           </Container>
         </Theme>
       </body>

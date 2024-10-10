@@ -29,7 +29,7 @@ model User {
   email       String    @unique
   status      Status    @default(NOT_CALLED)           // Enum for call status
   description String?                                  // Optional: Explanation of why the call didn’t work
-  lastCalled  DateTime?                                // Date when the volunteer was last called
+  lastCalled  DateTime? @default(now())                // Date when the volunteer was last called
 }
 
 model Admin {
